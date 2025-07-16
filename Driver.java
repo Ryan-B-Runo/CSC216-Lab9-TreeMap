@@ -9,7 +9,10 @@ public class Driver {
         s.delete("a");
         s.delete("b");
 
-        System.out.println(s.getRoot().getKey());
+        System.out.println(s.search("a"));
+        System.out.println(s.search("b"));
+        System.out.println(s.search("c"));
+        System.out.println(s.search("d"));
 
 //        TreeMap map = new TreeMap();
 //

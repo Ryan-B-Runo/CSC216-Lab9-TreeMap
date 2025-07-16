@@ -62,4 +62,20 @@ public class SplayTree {
         return min;
     }
 
+    private boolean find(Node root, String data) {
+        if (root == null) {
+            return false;
+        }else if(root.getKey().equals(data)) {
+            return true;
+        }else if(data.compareTo(root.getKey()) < 0) {
+            return find(root.getLeft(), data);
+        }else{
+            return find(root.getRight(), data);
+        }
+    }
+
+    public boolean search(String data) {
+        return find(root, data);
+    }
+
 }
