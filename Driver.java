@@ -1,7 +1,7 @@
 public class Driver {
     public static void main(String[] args) {
 
-        SplayTree s = new SplayTree();
+        SplayTree<String> s = new SplayTree<>();
         s.insert("a");
         s.insert("b");
         s.insert("c");
@@ -9,10 +9,10 @@ public class Driver {
         s.delete("a");
         s.delete("b");
 
-        System.out.println(s.search("a"));
-        System.out.println(s.search("b"));
-        System.out.println(s.search("c"));
-        System.out.println(s.search("d"));
+        System.out.println(s.contains("a"));
+        System.out.println(s.contains("b"));
+        System.out.println(s.contains("c"));
+        System.out.println(s.contains("d"));
 
 //        TreeMap map = new TreeMap();
 //

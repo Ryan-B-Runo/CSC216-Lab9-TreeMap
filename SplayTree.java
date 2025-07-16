@@ -27,11 +27,12 @@ public class SplayTree<T extends Comparable<T>> {
 
     public void insert(T data) {
         root = insert(root, data);
+        splay(find(root, data), data);
     }
 
     private Node<T> delete(Node<T> root, T data) {
         if (root == null) {
-            return root;
+            return null;
         }
         if (data.compareTo(root.getKey()) < 0) {
             root.setLeft(delete(root.getLeft(), data));
@@ -62,11 +63,11 @@ public class SplayTree<T extends Comparable<T>> {
         return min;
     }
 
-    private boolean find(Node<T> root, T data) {
+    private Node<T> find(Node<T> root, T data) {//returns the node where the data exists
         if (root == null) {
-            return false;
+            return null;
         }else if(root.getKey().equals(data)) {
-            return true;
+            return root;
         }else if(data.compareTo(root.getKey()) < 0) {
             return find(root.getLeft(), data);
         }else{
@@ -74,8 +75,65 @@ public class SplayTree<T extends Comparable<T>> {
         }
     }
 
-    public boolean search(T data) {
-        return find(root, data);
+    public boolean contains(T data) {
+        return find(root, data) != null;
+    }
+
+    private Node<T> rightRotate(Node<T> root) {
+        Node<T> temp = root.getLeft();
+        root.setLeft(temp.getRight());
+        temp.setRight(root);
+        return temp;
+    }
+
+    private Node<T> leftRotate(Node<T> root) {
+        Node<T> temp = root.getRight();
+        root.setRight(temp.getLeft());
+        temp.setLeft(root);
+        return temp;
+    }
+
+    private Node<T> splay(Node<T> root, T data) {
+        if(root == null || root.getKey() == data){
+            return root;
+        }
+        if(root.getKey().compareTo(data) > 0) {
+            if(root.getLeft() == null){
+                return root;
+            }
+            if(root.getLeft().getKey().compareTo(data) > 0){
+                root.getLeft().setLeft(splay(root.getLeft().getLeft(), data));
+                root = rightRotate(root);
+            }else if(root.getLeft().getKey().compareTo(data) < 0){
+                root.getLeft().setRight(splay(root.getLeft().getRight(), data));
+                if(root.getLeft().getRight() != null){
+                    root.setLeft(leftRotate(root.getLeft()));
+                }
+            }
+            if(root.getLeft() == null){
+                return root;
+            }else{
+                return rightRotate(root);
+            }
+        }else{
+            if(root.getRight() == null){
+                return root;
+            }
+            if(root.getRight().getKey().compareTo(data) > 0){
+                root.getRight().setLeft(splay(root.getRight().getLeft(), data));
+                if(root.getRight().getLeft() != null){
+                    root.setRight(rightRotate(root.getRight()));
+                }
+            }else if (root.getRight().getKey().compareTo(data) < 0){
+                root.getRight().setRight(splay(root.getRight().getRight(), data));
+                root = leftRotate(root);
+            }
+            if(root.getRight() == null){
+                return root;
+            }else{
+                return leftRotate(root);
+            }
+        }
     }
 
 }
