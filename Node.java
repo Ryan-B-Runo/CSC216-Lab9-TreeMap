@@ -1,33 +1,33 @@
-public class Node {
-    private String key;
-    private Node left, right;
+public class Node<T> {
+    private T key;
+    private Node<T> left, right;
 
-    public Node(String key){
+    public Node(T key){
         this.key = key;
         left = right = null;
     }
 
-    public String getKey() {
+    public T getKey() {
         return key;
     }
 
-    public Node getLeft() {
+    public Node<T> getLeft() {
         return left;
     }
 
-    public Node getRight() {
+    public Node<T> getRight() {
         return right;
     }
 
-    public void setKey(String key) {
+    public void setKey(T key) {
         this.key = key;
     }
 
-    public void setLeft(Node left) {
+    public void setLeft(Node<T> left) {
         this.left = left;
     }
 
-    public void setRight(Node right) {
+    public void setRight(Node<T> right) {
         this.right = right;
     }
 }

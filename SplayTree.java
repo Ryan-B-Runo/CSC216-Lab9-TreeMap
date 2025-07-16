@@ -1,19 +1,19 @@
-public class SplayTree {
+public class SplayTree<T extends Comparable<T>> {
     //Just a BST for now
 
-    private Node root;
+    private Node<T> root;
 
     public SplayTree() {
         root = null;
     }
 
-    public Node getRoot() {
+    public Node<T> getRoot() {
         return root;
     }
 
-    private Node insert(Node root, String data) {
+    private Node<T> insert(Node<T> root, T data) {
         if (root == null) {
-            root = new Node(data);
+            root = new Node<>(data);
             return root;
         }else{
             if(data.compareTo(root.getKey()) < 0) {
@@ -25,11 +25,11 @@ public class SplayTree {
         }
     }
 
-    public void insert(String data) {
+    public void insert(T data) {
         root = insert(root, data);
     }
 
-    private Node delete(Node root, String data) {
+    private Node<T> delete(Node<T> root, T data) {
         if (root == null) {
             return root;
         }
@@ -49,12 +49,12 @@ public class SplayTree {
         return root;
     }
 
-    public void delete(String data) {
+    public void delete(T data) {
         root = delete(root, data);
     }
 
-    private String min(Node root) {
-        String min = root.getKey();
+    private T min(Node<T> root) {
+        T min = root.getKey();
         while (root.getLeft() != null) {
             min = root.getLeft().getKey();
             root = root.getLeft();
@@ -62,7 +62,7 @@ public class SplayTree {
         return min;
     }
 
-    private boolean find(Node root, String data) {
+    private boolean find(Node<T> root, T data) {
         if (root == null) {
             return false;
         }else if(root.getKey().equals(data)) {
@@ -74,7 +74,7 @@ public class SplayTree {
         }
     }
 
-    public boolean search(String data) {
+    public boolean search(T data) {
         return find(root, data);
     }
 
