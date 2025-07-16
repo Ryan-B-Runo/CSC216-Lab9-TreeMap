@@ -76,7 +76,12 @@ public class SplayTree<T extends Comparable<T>> {
         }
     }
 
-    public boolean contains(T data) {
+     public Node<T> find(T data) {
+        splay(find(root, data), data);
+        return find(root, data);
+     }
+
+    public boolean contains(T data) {//for testing
         return find(root, data) != null;
     }
 

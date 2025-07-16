@@ -14,6 +14,8 @@ public class Driver {
         System.out.println(s.contains("c"));
         System.out.println(s.contains("d"));
 
+        System.out.println(s.find("c").getKey());
+
 //        TreeMap map = new TreeMap();
 //
 //        // Insert a number of key-value pairs into the tree map
