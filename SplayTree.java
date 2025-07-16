@@ -1,10 +1,13 @@
 public class SplayTree<T extends Comparable<T>> {
-    //Just a BST for now
 
     private Node<T> root;
 
     public SplayTree() {
         root = null;
+    }
+
+    public Node<T> getRoot() {
+        return root;
     }
 
     private Node<T> insert(Node<T> root, T data) {

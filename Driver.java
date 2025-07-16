@@ -1,38 +1,23 @@
 public class Driver {
     public static void main(String[] args) {
 
-        SplayTree<String> s = new SplayTree<>();
-        s.insert("a");
-        s.insert("b");
-        s.insert("c");
+        TreeMap map = new TreeMap();
 
-        s.delete("a");
-        s.delete("b");
+        // Insert a number of key-value pairs into the tree map
+        map.insert("keyOne", "valueOne");
+        map.insert("keyTwo", "valueTwo");
+        map.insert("keyThree", "valueThree");
 
-        System.out.println(s.contains("a"));
-        System.out.println(s.contains("b"));
-        System.out.println(s.contains("c"));
-        System.out.println(s.contains("d"));
+        // Prints out valueOne
+        System.out.println(map.get("keyOne"));
 
-        System.out.println(s.find("c").getKey());
+        // Prints out valueThree
+        System.out.println(map.get("keyThree"));
 
-//        TreeMap map = new TreeMap();
-//
-//        // Insert a number of key-value pairs into the tree map
-//        map.insert("keyOne", "valueOne");
-//        map.insert("keyTwo", "valueTwo");
-//        map.insert("keyThree", "valueThree");
-//
-//        // Prints out valueOne
-//        System.out.println(map.get("keyOne"));
-//
-//        // Prints out valueThree
-//        System.out.println(map.get("keyThree"));
-//
-//        // Prints out an empty string or some default value of your choice
-//        System.out.println(map.get("keyDoesNotExist"));
-//
-//        // Deletes the key-value pair from the tree map
-//        System.out.println(map.delete("keyOne"));
+        // Prints out an empty string or some default value of your choice
+        System.out.println(map.get("keyDoesNotExist"));
+
+        // Deletes the key-value pair from the tree map
+        System.out.println(map.delete("keyOne"));
     }
 }
