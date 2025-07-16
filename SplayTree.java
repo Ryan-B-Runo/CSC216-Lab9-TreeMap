@@ -7,22 +7,17 @@ public class SplayTree<T extends Comparable<T>> {
         root = null;
     }
 
-    public Node<T> getRoot() {
-        return root;
-    }
-
     private Node<T> insert(Node<T> root, T data) {
         if (root == null) {
             root = new Node<>(data);
-            return root;
         }else{
             if(data.compareTo(root.getKey()) < 0) {
                 root.setLeft(insert(root.getLeft(), data));
             }else if(data.compareTo(root.getKey()) > 0) {
                 root.setRight(insert(root.getRight(), data));
             }
-            return root;
         }
+        return root;
     }
 
     public void insert(T data) {
