@@ -34,6 +34,7 @@ public class SplayTree<T extends Comparable<T>> {
         if (root == null) {
             return null;
         }
+        splay(find(root, data), data);
         if (data.compareTo(root.getKey()) < 0) {
             root.setLeft(delete(root.getLeft(), data));
         }else if(data.compareTo(root.getKey()) > 0) {
