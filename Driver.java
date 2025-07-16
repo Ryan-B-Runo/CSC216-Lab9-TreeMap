@@ -1,5 +1,16 @@
 public class Driver {
     public static void main(String[] args) {
+
+        SplayTree s = new SplayTree();
+        s.insert("a");
+        s.insert("b");
+        s.insert("c");
+
+        s.delete("a");
+        s.delete("b");
+
+        System.out.println(s.getRoot().getKey());
+
 //        TreeMap map = new TreeMap();
 //
 //        // Insert a number of key-value pairs into the tree map
